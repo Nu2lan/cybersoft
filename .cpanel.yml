@@ -4,4 +4,4 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/*
     - npm install
     - npm run build
-    - /bin/cp -R build/* $DEPLOYPATH
+    - /bin/cp -R out/* $DEPLOYPATH
