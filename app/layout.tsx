@@ -5,10 +5,7 @@ import { Geist_Mono } from "next/font/google"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 import { LanguageProvider } from "@/contexts/language-context"
-import "flag-icons/css/flag-icons.min.css"
-
 import "./globals.css"
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +25,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

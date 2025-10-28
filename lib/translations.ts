@@ -130,6 +130,21 @@ export const translations = {
         ],
       },
     },
+    // Clients
+    clients: {
+      badge: "Our Clients",
+      title: "Trusted by",
+      titleHighlight: "Industry Leaders",
+      description: "Join the companies that chose us to build their digital future.",
+      stats: {
+        projects: "Projects Completed",
+        satisfaction: "Client Satisfaction",
+        response: "Average Response",
+        growth: "Average Growth",
+      },
+      trustedBy: "Trusted by innovative companies",
+      cta: "Join these amazing companies",
+    },
     // Footer
     footer: {
       rights: "All rights reserved.",
@@ -265,6 +280,21 @@ export const translations = {
           },
         ],
       },
+    },
+    // Clients
+    clients: {
+      badge: "Müştərilərimiz",
+      title: "Etibar Edən",
+      titleHighlight: "Sənaye Liderləri",
+      description: "Rəqəmsal gələcəklərini qurmaq üçün bizi seçən şirkətlərə qoşulun.",
+      stats: {
+        projects: "Tamamlanmış Layihələr",
+        satisfaction: "Müştəri Məmnuniyyəti",
+        response: "Orta Cavab Müddəti",
+        growth: "Orta Böyümə",
+      },
+      trustedBy: "İnnovativ şirkətlər tərəfindən etibar edilir",
+      cta: "Bu heyrətamiz şirkətlərə qoşulun",
     },
     // Footer
     footer: {

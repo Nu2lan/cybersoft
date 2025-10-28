@@ -56,52 +56,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      <div className="relative mt-16 w-screen overflow-hidden">
-        <div className="relative overflow-hidden border-y border-border bg-gradient-to-br from-blue-50 to-purple-50 py-8 shadow-2xl dark:from-blue-950/20 dark:to-purple-950/20">
-          {/* First row - 3 cards moving right to left */}
-          <div className="mb-4 flex gap-4 overflow-hidden">
-            <div className="flex animate-scroll-left gap-4">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div
-                  key={i}
-                  className="h-32 w-64 flex-shrink-0 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30"
-                />
-              ))}
-            </div>
-            {/* Duplicate for seamless loop */}
-            <div className="flex animate-scroll-left gap-4" aria-hidden="true">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div
-                  key={`dup-${i}`}
-                  className="h-32 w-64 flex-shrink-0 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-blue-900/30"
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Second row - 2 larger cards moving right to left (slower) */}
-          <div className="flex gap-4 overflow-hidden">
-            <div className="flex animate-scroll-left-slow gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="h-40 w-80 flex-shrink-0 rounded-xl bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30"
-                />
-              ))}
-            </div>
-            {/* Duplicate for seamless loop */}
-            <div className="flex animate-scroll-left-slow gap-4" aria-hidden="true">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={`dup-${i}`}
-                  className="h-40 w-80 flex-shrink-0 rounded-xl bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

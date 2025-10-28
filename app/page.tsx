@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Hero } from "@/components/hero"
+import { Clients } from "@/components/clients"
 import { Services } from "@/components/services"
 import { Contact } from "@/components/contact"
 import { Navbar } from "@/components/navbar"
@@ -51,6 +52,7 @@ export default function Home() {
       <Navbar activeSection={activeSection} />
       <main>
         <Hero />
+        <Clients />
         <Services />
         <Contact />
       </main>
