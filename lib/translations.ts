@@ -5,12 +5,13 @@ export const translations = {
     // Navbar
     nav: {
       home: "Home",
+      clients: "Clients",
       services: "Services",
       contact: "Contact",
     },
     // Hero
     hero: {
-      badge: "Trusted by innovative companies worldwide",
+      badge: "Trusted by innovative companies",
       title: "Building the Future of",
       titleHighlight: "Web & SaaS",
       description: "Cybersoft designs high-impact websites and scalable SaaS products that help businesses grow.",
@@ -63,7 +64,7 @@ export const translations = {
     },
     // Contact
     contact: {
-      title: "Let's Build Something",
+      title: "Let's Build Project",
       titleHighlight: "Amazing",
       description: "Tell us about your project—get a proposal within 24 hours.",
       form: {
@@ -83,12 +84,6 @@ export const translations = {
           saas: "SaaS Platform",
           integration: "Integration",
           other: "Other",
-        },
-        budgetRanges: {
-          "10k-25k": "$10k - $25k",
-          "25k-50k": "$25k - $50k",
-          "50k-100k": "$50k - $100k",
-          "100k+": "$100k+",
         },
         errors: {
           nameRequired: "Name is required",
@@ -134,13 +129,12 @@ export const translations = {
     clients: {
       badge: "Our Clients",
       title: "Trusted by",
-      titleHighlight: "Industry Leaders",
+      titleHighlight: "Companies",
       description: "Join the companies that chose us to build their digital future.",
       stats: {
         projects: "Projects Completed",
         satisfaction: "Client Satisfaction",
-        response: "Average Response",
-        growth: "Average Growth",
+        response: "Clients",
       },
       trustedBy: "Trusted by innovative companies",
       cta: "Join these amazing companies",
@@ -155,17 +149,18 @@ export const translations = {
     // Navbar
     nav: {
       home: "Ana Səhifə",
+      clients: "Müştərilər",
       services: "Xidmətlər",
       contact: "Əlaqə",
     },
     // Hero
     hero: {
-      badge: "Dünya miqyasında innovativ şirkətlər tərəfindən etibar edilir",
+      badge: "İnnovativ şirkətlər tərəfindən etibar edilir",
       title: "Gələcəyi Qururuq",
       titleHighlight: "Veb & SaaS",
       description:
         "Cybersoft bizneslərin böyüməsinə kömək edən yüksək təsirli veb saytlar və miqyaslana bilən SaaS məhsulları dizayn edir.",
-      getStarted: "Başlayın",
+      getStarted: "Müraciət et",
       seeServices: "Xidmətlərə Baxın",
     },
     // Services
@@ -215,7 +210,7 @@ export const translations = {
     // Contact
     contact: {
       title: "Gəlin Birlikdə",
-      titleHighlight: "Heyrətamiz Bir Şey Yaradaq",
+      titleHighlight: "Heyrətamiz Layihə Yaradaq",
       description: "Layihəniz haqqında bizə danışın—24 saat ərzində təklif alın.",
       form: {
         name: "Ad",
@@ -234,12 +229,6 @@ export const translations = {
           saas: "SaaS Platforması",
           integration: "İnteqrasiya",
           other: "Digər",
-        },
-        budgetRanges: {
-          "10k-25k": "$10k - $25k",
-          "25k-50k": "$25k - $50k",
-          "50k-100k": "$50k - $100k",
-          "100k+": "$100k+",
         },
         errors: {
           nameRequired: "Ad tələb olunur",
@@ -285,13 +274,12 @@ export const translations = {
     clients: {
       badge: "Müştərilərimiz",
       title: "Etibar Edən",
-      titleHighlight: "Sənaye Liderləri",
+      titleHighlight: "Şirkətlər",
       description: "Rəqəmsal gələcəklərini qurmaq üçün bizi seçən şirkətlərə qoşulun.",
       stats: {
         projects: "Tamamlanmış Layihələr",
         satisfaction: "Müştəri Məmnuniyyəti",
-        response: "Orta Cavab Müddəti",
-        growth: "Orta Böyümə",
+        response: "Müştərilər",
       },
       trustedBy: "İnnovativ şirkətlər tərəfindən etibar edilir",
       cta: "Bu heyrətamiz şirkətlərə qoşulun",

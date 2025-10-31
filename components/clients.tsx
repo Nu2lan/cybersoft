@@ -27,14 +27,9 @@ export function Clients() {
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      value: "24h",
+      value: "24+",
       label: t.clients.stats.response,
       gradient: "from-orange-500 to-red-500",
-    },
-    {
-      value: "3x",
-      label: t.clients.stats.growth,
-      gradient: "from-green-500 to-emerald-500",
     },
   ]
 
@@ -65,7 +60,7 @@ export function Clients() {
           </div>
 
           {/* Stats Grid */}
-          <div className="mb-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stats.map((stat, index) => (
               <Card
                 key={index}
@@ -110,36 +105,29 @@ export function Clients() {
                 <div className="flex animate-scroll-left gap-16">
                   {/* First set of logos */}
                   {clients.map((client, index) => (
-                    <div key={`first-${index}`} className="group flex min-w-[200px] items-center justify-center">
+                    <div key={`first-${index}`} className="group flex min-w-[250px] items-center justify-center">
                       <div className="relative p-8 transition-all duration-500 group-hover:scale-110">
                         <img
                           src={client.logo || "/placeholder.svg"}
                           alt={client.name}
-                          className="h-20 w-auto object-contain opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                          className="h-32 w-auto object-contain opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                         />
                       </div>
                     </div>
                   ))}
                   {/* Duplicate set for seamless loop */}
                   {clients.map((client, index) => (
-                    <div key={`second-${index}`} className="group flex min-w-[200px] items-center justify-center">
+                    <div key={`second-${index}`} className="group flex min-w-[250px] items-center justify-center">
                       <div className="relative p-8 transition-all duration-500 group-hover:scale-110">
                         <img
                           src={client.logo || "/placeholder.svg"}
                           alt={client.name}
-                          className="h-20 w-auto object-contain opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                          className="h-32 w-auto object-contain opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                         />
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Bottom CTA text */}
-              <div className="mt-12 text-center">
-                <p className="text-sm font-medium text-muted-foreground">
-                  {t.clients.cta || "Join these amazing companies"}
-                </p>
               </div>
             </div>
           </div>
