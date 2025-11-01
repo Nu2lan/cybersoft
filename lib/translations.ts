@@ -84,10 +84,6 @@ export const translations = {
           saas: "SaaS Platform",
           integration: "Integration",
           other: "Other",
-          sendError: "Error",
-          sendErrorDescription: "Failed to send message. Please try again.",
-          networkError: "Connection Error",
-          networkErrorDescription: "Failed to send message. Please check your internet connection and try again.",
         },
         errors: {
           nameRequired: "Name is required",
@@ -96,6 +92,10 @@ export const translations = {
           projectTypeRequired: "Please select a project type",
           budgetRequired: "Please select a budget range",
           messageRequired: "Message is required",
+          sendError: "Error",
+          sendErrorDescription: "Failed to send message. Please try again.",
+          networkError: "Connection Error",
+          networkErrorDescription: "Failed to send message. Please check your internet connection and try again.",
         },
         success: {
           title: "Thanks! We'll reach out shortly.",
@@ -172,7 +172,7 @@ export const translations = {
       title: "Nəticə Gətirən",
       titleHighlight: "Xidmətlər",
       description:
-        "Piksel-mükəmməl veb saytlardan istehsala hazır SaaS-a qədər, əhəmiyyətli olanı təqdim edirik: sürət, etibarlılıq və nəticələr.",
+        "Piksel-mükəmmələ veb saytlardan istehsala hazır SaaS-a qədər, əhəmiyyətli olanı təqdim edirik: sürət, etibarlılıq və nəticələr.",
       websiteDev: {
         title: "Veb Sayt İnkişafı",
         description: "Performans və böyümə üçün qurulmuş yeni nəsil interfeyslər",
