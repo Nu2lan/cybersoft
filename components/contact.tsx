@@ -1,228 +1,302 @@
-"use client"
+export type Language = "en" | "az"
 
-import type React from "react"
-
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { useToast } from "@/hooks/use-toast"
-import { Mail, MapPin, Send } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
-
-export function Contact() {
-  const { t } = useLanguage()
-  const { toast } = useToast()
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    projectType: "",
-    message: "",
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = t.contact.form.errors.nameRequired
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = t.contact.form.errors.emailRequired
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = t.contact.form.errors.emailInvalid
-    }
-
-    if (!formData.projectType) {
-      newErrors.projectType = t.contact.form.errors.projectTypeRequired
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = t.contact.form.errors.messageRequired
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (validateForm()) {
-      toast({
-        title: t.contact.form.success.title,
-        description: t.contact.form.success.description,
-      })
-
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        projectType: "",
-        message: "",
-      })
-      setErrors({})
-    }
-  }
-
-  const handleChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }))
-    }
-  }
-
-  const faqs = t.contact.faq.questions
-
-  return (
-    <section id="contact" className="bg-muted/30 py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight md:text-5xl">
-            {t.contact.title}{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {t.contact.titleHighlight}
-            </span>
-          </h2>
-          <p className="mb-16 text-pretty text-lg text-muted-foreground">{t.contact.description}</p>
-        </div>
-
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
-          <Card className="rounded-2xl border border-border bg-card p-8 shadow-sm lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name">
-                    {t.contact.form.name} <span className="text-destructive">{t.contact.form.required}</span>
-                  </Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                    className={errors.name ? "border-destructive" : ""}
-                  />
-                  {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email">
-                    {t.contact.form.email} <span className="text-destructive">{t.contact.form.required}</span>
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                    className={errors.email ? "border-destructive" : ""}
-                  />
-                  {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
-                </div>
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="company">{t.contact.form.company}</Label>
-                  <Input
-                    id="company"
-                    value={formData.company}
-                    onChange={(e) => handleChange("company", e.target.value)}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="projectType">
-                    {t.contact.form.projectType} <span className="text-destructive">{t.contact.form.required}</span>
-                  </Label>
-                  <Select value={formData.projectType} onValueChange={(value) => handleChange("projectType", value)}>
-                    <SelectTrigger
-                      id="projectType"
-                      className={`h-10 w-full ${errors.projectType ? "border-destructive" : ""}`}
-                    >
-                      <SelectValue placeholder={t.contact.form.selectType} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="website">{t.contact.form.projectTypes.website}</SelectItem>
-                      <SelectItem value="saas">{t.contact.form.projectTypes.saas}</SelectItem>
-                      <SelectItem value="integration">{t.contact.form.projectTypes.integration}</SelectItem>
-                      <SelectItem value="other">{t.contact.form.projectTypes.other}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.projectType && <p className="text-sm text-destructive">{errors.projectType}</p>}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">
-                  {t.contact.form.message} <span className="text-destructive">{t.contact.form.required}</span>
-                </Label>
-                <Textarea
-                  id="message"
-                  rows={8}
-                  value={formData.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  className={errors.message ? "border-destructive" : ""}
-                  placeholder={t.contact.form.messagePlaceholder}
-                />
-                {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-              >
-                {t.contact.form.send}
-                <Send className="ml-2 h-4 w-4" />
-              </Button>
-            </form>
-          </Card>
-
-          <div className="space-y-6">
-            <Card className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold">{t.contact.info.title}</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-1 h-5 w-5 text-blue-600" />
-                  <div>
-                    <p className="font-medium">{t.contact.info.email}</p>
-                    <a
-                      href="mailto:sales@cybersoft.az"
-                      className="text-sm text-muted-foreground hover:text-foreground"
-                    >
-                      sales@cybersoft.az
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 h-5 w-5 text-purple-600" />
-                  <div>
-                    <p className="font-medium">{t.contact.info.location}</p>
-                    <p className="text-sm text-muted-foreground">{t.contact.info.locationValue}</p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold">{t.contact.faq.title}</h3>
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left text-sm">{faq.question}</AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground">{faq.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+export const translations = {
+  en: {
+    // Navbar
+    nav: {
+      home: "Home",
+      clients: "Clients",
+      services: "Services",
+      contact: "Contact",
+    },
+    // Hero
+    hero: {
+      badge: "Trusted by innovative companies",
+      title: "Building the Future of",
+      titleHighlight: "Web & SaaS",
+      description: "Cybersoft designs high-impact websites and scalable SaaS products that help businesses grow.",
+      getStarted: "Get Started",
+      seeServices: "See Services",
+    },
+    // Services
+    services: {
+      title: "Services That Drive",
+      titleHighlight: "Results",
+      description:
+        "From pixel-perfect websites to production-ready SaaS, we ship what matters: speed, reliability, and results.",
+      websiteDev: {
+        title: "Website Development",
+        description: "Next-gen frontends built for performance and growth",
+        features: [
+          "Modern React & Next.js architecture",
+          "SEO optimization & Core Web Vitals",
+          "Responsive design & accessibility",
+          "Lightning-fast page loads",
+        ],
+      },
+      saas: {
+        title: "SaaS Platforms",
+        description: "Production-ready platforms that scale with your business",
+        features: [
+          "Multi-tenant architecture",
+          "Authentication & authorization",
+          "Billing & subscription management",
+          "Analytics & monitoring",
+        ],
+      },
+      cloud: {
+        title: "Cloud Integration",
+        description: "Seamless integrations and robust infrastructure",
+        features: [
+          "RESTful & GraphQL APIs",
+          "Microservices architecture",
+          "Real-time observability",
+          "Enterprise-grade security",
+        ],
+      },
+      processTitle: "Our Process",
+      process: [
+        { step: "01", title: "Discover", description: "Understanding your vision" },
+        { step: "02", title: "Design", description: "Crafting the experience" },
+        { step: "03", title: "Build", description: "Engineering excellence" },
+        { step: "04", title: "Launch", description: "Delivering results" },
+      ],
+    },
+    // Contact
+    contact: {
+      title: "Let's Build Project",
+      titleHighlight: "Amazing",
+      description: "Tell us about your project—get a proposal within 24 hours.",
+      form: {
+        name: "Name",
+        email: "Email",
+        company: "Company",
+        projectType: "Project Type",
+        budget: "Budget",
+        message: "Message",
+        messagePlaceholder: "Tell us about your project...",
+        required: "*",
+        send: "Send Message",
+        selectType: "Select type",
+        selectRange: "Select range",
+        projectTypes: {
+          website: "Website",
+          saas: "SaaS Platform",
+          integration: "Integration",
+          other: "Other",
+        },
+        errors: {
+          nameRequired: "Name is required",
+          emailRequired: "Email is required",
+          emailInvalid: "Invalid email address",
+          projectTypeRequired: "Please select a project type",
+          budgetRequired: "Please select a budget range",
+          messageRequired: "Message is required",
+          sendError: "Error",
+          sendErrorDescription: "Failed to send message. Please try again.",
+          networkError: "Connection Error",
+          networkErrorDescription: "Failed to send message. Please check your internet connection and try again.",
+        },
+        success: {
+          title: "Thanks! We'll reach out shortly.",
+          description: "We typically respond within 24 hours.",
+        },
+      },
+      info: {
+        title: "Contact Info",
+        email: "Email",
+        location: "Location",
+        locationValue: "Baku, Azerbaijan",
+      },
+      faq: {
+        title: "FAQ",
+        questions: [
+          {
+            question: "What is your typical delivery time?",
+            answer:
+              "Project timelines vary based on scope and complexity. A typical website takes 4-6 weeks, while a full SaaS platform may take 3-6 months. We provide detailed timelines during the discovery phase.",
+          },
+          {
+            question: "What technologies do you use?",
+            answer:
+              "We specialize in modern web technologies including React, Next.js, TypeScript, Node.js, and cloud platforms like Vercel and AWS. We choose the best stack for your specific needs.",
+          },
+          {
+            question: "How does pricing work?",
+            answer:
+              "We offer both fixed-price projects and ongoing retainer arrangements. Pricing depends on project scope, complexity, and timeline. We provide transparent quotes after understanding your requirements.",
+          },
+        ],
+      },
+    },
+    // Clients
+    clients: {
+      badge: "Our Clients",
+      title: "Trusted by",
+      titleHighlight: "Companies",
+      description: "Join the companies that chose us to build their digital future.",
+      stats: {
+        projects: "Projects Completed",
+        satisfaction: "Client Satisfaction",
+        response: "Clients",
+      },
+      trustedBy: "Trusted by innovative companies",
+      cta: "Join these amazing companies",
+    },
+    // Footer
+    footer: {
+      rights: "All rights reserved.",
+      tagline: "We help businesses launch fast, scale reliably, and deliver delightful digital experiences.",
+    },
+  },
+  az: {
+    // Navbar
+    nav: {
+      home: "Ana Səhifə",
+      clients: "Müştərilər",
+      services: "Xidmətlər",
+      contact: "Əlaqə",
+    },
+    // Hero
+    hero: {
+      badge: "İnnovativ şirkətlər tərəfindən etibar edilir",
+      title: "Gələcəyi Qururuq",
+      titleHighlight: "Veb & SaaS",
+      description:
+        "Cybersoft bizneslərin böyüməsinə kömək edən yüksək təsirli veb saytlar və miqyaslana bilən SaaS məhsulları dizayn edir.",
+      getStarted: "Müraciət et",
+      seeServices: "Xidmətlərə Baxın",
+    },
+    // Services
+    services: {
+      title: "Nəticə Gətirən",
+      titleHighlight: "Xidmətlər",
+      description:
+        "Piksel-mükəmmələ veb saytlardan istehsala hazır SaaS-a qədər, əhəmiyyətli olanı təqdim edirik: sürət, etibarlılıq və nəticələr.",
+      websiteDev: {
+        title: "Veb Sayt İnkişafı",
+        description: "Performans və böyümə üçün qurulmuş yeni nəsil interfeyslər",
+        features: [
+          "Müasir React və Next.js arxitekturası",
+          "SEO optimallaşdırması və Core Web Vitals",
+          "Responsiv dizayn və əlçatanlıq",
+          "İldırım sürətli səhifə yükləmələri",
+        ],
+      },
+      saas: {
+        title: "SaaS Platformaları",
+        description: "Biznesinizlə birlikdə böyüyən istehsala hazır platformalar",
+        features: [
+          "Çox kirayəçi arxitekturası",
+          "Autentifikasiya və avtorizasiya",
+          "Ödəniş və abunə idarəetməsi",
+          "Analitika və monitorinq",
+        ],
+      },
+      cloud: {
+        title: "Bulud İnteqrasiyası",
+        description: "Qüsursuz inteqrasiyalar və möhkəm infrastruktur",
+        features: [
+          "RESTful və GraphQL API-lar",
+          "Mikroservis arxitekturası",
+          "Real vaxt müşahidə",
+          "Korporativ səviyyəli təhlükəsizlik",
+        ],
+      },
+      processTitle: "Bizim Proses",
+      process: [
+        { step: "01", title: "Kəşf", description: "Vizyonunuzu başa düşmək" },
+        { step: "02", title: "Dizayn", description: "Təcrübəni yaratmaq" },
+        { step: "03", title: "Qurma", description: "Mühəndislik mükəmməlliyi" },
+        { step: "04", title: "Buraxılış", description: "Nəticələri təqdim etmək" },
+      ],
+    },
+    // Contact
+    contact: {
+      title: "Gəlin Birlikdə",
+      titleHighlight: "Heyrətamiz Layihə Yaradaq",
+      description: "Layihəniz haqqında bizə danışın—24 saat ərzində təklif alın.",
+      form: {
+        name: "Ad",
+        email: "E-poçt",
+        company: "Şirkət",
+        projectType: "Layihə Növü",
+        budget: "Büdcə",
+        message: "Mesaj",
+        messagePlaceholder: "Layihəniz haqqında bizə danışın...",
+        required: "*",
+        send: "Mesaj Göndər",
+        selectType: "Növ seçin",
+        selectRange: "Aralıq seçin",
+        projectTypes: {
+          website: "Veb Sayt",
+          saas: "SaaS Platforması",
+          integration: "İnteqrasiya",
+          other: "Digər",
+        },
+        errors: {
+          nameRequired: "Ad tələb olunur",
+          emailRequired: "E-poçt tələb olunur",
+          emailInvalid: "Yanlış e-poçt ünvanı",
+          projectTypeRequired: "Zəhmət olmasa layihə növü seçin",
+          budgetRequired: "Zəhmət olmasa büdcə aralığı seçin",
+          messageRequired: "Mesaj tələb olunur",
+          sendError: "Xəta",
+          sendErrorDescription: "Mesaj göndərilmədi. Zəhmət olmasa yenidən cəhd edin.",
+          networkError: "Bağlantı Xətası",
+          networkErrorDescription: "Mesaj göndərilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
+        },
+        success: {
+          title: "Təşəkkürlər! Tezliklə sizinlə əlaqə saxlayacağıq.",
+          description: "Biz adətən 24 saat ərzində cavab veririk.",
+        },
+      },
+      info: {
+        title: "Əlaqə Məlumatları",
+        email: "E-poçt",
+        location: "Yer",
+        locationValue: "Bakı, Azərbaycan",
+      },
+      faq: {
+        title: "Tez-tez Verilən Suallar",
+        questions: [
+          {
+            question: "Tipik çatdırılma müddətiniz nə qədərdir?",
+            answer:
+              "Layihə müddətləri əhatə dairəsi və mürəkkəbliyə görə dəyişir. Tipik veb sayt 4-6 həftə çəkir, tam SaaS platforması isə 3-6 ay çəkə bilər. Kəşf mərhələsində ətraflı qrafiklər təqdim edirik.",
+          },
+          {
+            question: "Hansı texnologiyalardan istifadə edirsiniz?",
+            answer:
+              "Biz React, Next.js, TypeScript, Node.js və Vercel və AWS kimi bulud platformaları daxil olmaqla müasir veb texnologiyalarında ixtisaslaşırıq. Sizin xüsusi ehtiyaclarınız üçün ən yaxşı texnologiya yığınını seçirik.",
+          },
+          {
+            question: "Qiymətləndirmə necə işləyir?",
+            answer:
+              "Biz həm sabit qiymətli layihələr, həm də davamlı saxlama razılaşmaları təklif edirik. Qiymətləndirmə layihənin əhatə dairəsi, mürəkkəbliyi və müddətindən asılıdır. Tələblərinizi başa düşdükdən sonra şəffaf təkliflər təqdim edirik.",
+          },
+        ],
+      },
+    },
+    // Clients
+    clients: {
+      badge: "Müştərilərimiz",
+      title: "Etibar Edən",
+      titleHighlight: "Şirkətlər",
+      description: "Rəqəmsal gələcəklərini qurmaq üçün bizi seçən şirkətlərə qoşulun.",
+      stats: {
+        projects: "Tamamlanmış Layihələr",
+        satisfaction: "Müştəri Məmnuniyyəti",
+        response: "Müştərilər",
+      },
+      trustedBy: "İnnovativ şirkətlər tərəfindən etibar edilir",
+      cta: "Bu heyrətamiz şirkətlərə qoşulun",
+    },
+    // Footer
+    footer: {
+      rights: "Bütün hüquqlar qorunur.",
+      tagline:
+        "Biz bizneslərin sürətli başlamasına, etibarlı miqyaslanmasına və xoş rəqəmsal təcrübələr təqdim etməsinə kömək edirik.",
+    },
+  },
 }

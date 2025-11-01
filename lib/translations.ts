@@ -84,6 +84,10 @@ export const translations = {
           saas: "SaaS Platform",
           integration: "Integration",
           other: "Other",
+          sendError: "Error",
+          sendErrorDescription: "Failed to send message. Please try again.",
+          networkError: "Connection Error",
+          networkErrorDescription: "Failed to send message. Please check your internet connection and try again.",
         },
         errors: {
           nameRequired: "Name is required",
@@ -237,6 +241,10 @@ export const translations = {
           projectTypeRequired: "Zəhmət olmasa layihə növü seçin",
           budgetRequired: "Zəhmət olmasa büdcə aralığı seçin",
           messageRequired: "Mesaj tələb olunur",
+          sendError: "Xəta",
+          sendErrorDescription: "Mesaj göndərilmədi. Zəhmət olmasa yenidən cəhd edin.",
+          networkError: "Bağlantı Xətası",
+          networkErrorDescription: "Mesaj göndərilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
         },
         success: {
           title: "Təşəkkürlər! Tezliklə sizinlə əlaqə saxlayacağıq.",
