@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cybersoft – Innovative IT Solutions. We deliver cutting-edge software development, cloud & DevOps, cybersecurity, and IT consulting services.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Cybersoft – Innovative IT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Nunito+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="#hero" class="logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">Cyber<span class="logo-accent">soft</span></span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Home</a></li>
+                <li><a href="#services" class="nav-link" data-i18n="nav_services">Our Services</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher" id="lang-switcher">
+                    <button class="lang-btn" id="lang-btn">
+                        <img class="lang-flag-btn" id="current-flag" src="https://flagcdn.com/w40/gb.png" alt="EN">
+                        <span id="current-lang">EN</span>
+                        <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option active" data-lang="en" data-flag="gb">
+                            <img class="lang-flag" src="https://flagcdn.com/w40/gb.png" alt="GB"> English
+                        </button>
+                        <button class="lang-option" data-lang="az" data-flag="az">
+                            <img class="lang-flag" src="https://flagcdn.com/w40/az.png" alt="AZ"> Azərbaycan
+                        </button>
+                        <button class="lang-option" data-lang="tr" data-flag="tr">
+                            <img class="lang-flag" src="https://flagcdn.com/w40/tr.png" alt="TR"> Türkçe
+                        </button>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-grid-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge anim-fade-up">
+                <span class="badge-dot"></span>
+                <span data-i18n="hero_badge">Next-Generation Technology Partner</span>
+            </div>
+            <h1 class="hero-title anim-fade-up" style="--delay: 0.1s">
+                <span class="gradient-text" data-i18n="hero_title">Innovative IT Solutions</span>
+            </h1>
+            <p class="hero-subtitle anim-fade-up" style="--delay: 0.2s" data-i18n="hero_subtitle">
+                We architect the future of digital transformation. From enterprise software to cloud-native platforms,
+                our solutions are designed to accelerate your business in the age of AI and beyond.
+            </p>
+            <div class="hero-buttons anim-fade-up" style="--delay: 0.3s">
+                <a href="#services" class="btn btn-primary">
+                    <span data-i18n="hero_btn_services">Discover Services</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span data-i18n="hero_btn_contact">Contact Us</span>
+                </a>
+            </div>
+            <!--
+            <div class="hero-stats anim-fade-up" style="--delay: 0.4s">
+                <div class="stat">
+                    <span class="stat-number" data-count="150">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label" data-i18n="stat_projects">Projects Delivered</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label" data-i18n="stat_engineers">Expert Engineers</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="99">0</span><span class="stat-plus">%</span>
+                    <span class="stat-label" data-i18n="stat_satisfaction">Client Satisfaction</span>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+            <span data-i18n="scroll">Scroll</span>
+            <div class="scroll-arrows">
+                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 1l6 6 6-6" />
+                </svg>
+                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 1l6 6 6-6" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header anim-fade-up">
+                <span class="section-tag" data-i18n="services_tag">What We Do</span>
+                <h2 class="section-title"><span data-i18n="services_title_1">Our</span> <span class="gradient-text"
+                        data-i18n="services_title_2">Services</span></h2>
+                <p class="section-subtitle" data-i18n="services_subtitle">End-to-end technology solutions crafted to
+                    solve complex challenges and
+                    drive measurable growth.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card anim-fade-up" style="--delay: 0s">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <path d="M8 21h8M12 17v4" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="service_1_title">Software Development</h3>
+                    <p data-i18n="service_1_desc">Scalable, robust custom software built with modern architectures —
+                        from microservices to
+                        monoliths, designed for your unique workflow.</p>
+                    <div class="card-line"></div>
+                </div>
+                <div class="service-card anim-fade-up" style="--delay: 0.1s">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="service_2_title">Mobile App Development</h3>
+                    <p data-i18n="service_2_desc">Native and cross-platform mobile applications with buttery-smooth UX,
+                        real-time capabilities, and
+                        pixel-perfect interfaces.</p>
+                    <div class="card-line"></div>
+                </div>
+                <div class="service-card anim-fade-up" style="--delay: 0.2s">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12" />
+                            <path d="M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10" />
+                            <path d="M16 8l-4 4-4-4" />
+                            <path d="M12 2v10" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="service_3_title">Cloud & DevOps</h3>
+                    <p data-i18n="service_3_desc">Seamless cloud migration, CI/CD pipelines, container orchestration,
+                        and infrastructure-as-code
+                        for maximum uptime and agility.</p>
+                    <div class="card-line"></div>
+                </div>
+                <div class="service-card anim-fade-up" style="--delay: 0.3s">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="service_4_title">Cybersecurity Solutions</h3>
+                    <p data-i18n="service_4_desc">Comprehensive threat detection, penetration testing, zero-trust
+                        architecture, and compliance
+                        frameworks to protect your digital assets.</p>
+                    <div class="card-line"></div>
+                </div>
+                <div class="service-card anim-fade-up" style="--delay: 0.4s">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="service_5_title">IT Consulting</h3>
+                    <p data-i18n="service_5_desc">Strategic technology road-mapping, digital transformation advisory,
+                        and system audits from
+                        seasoned architects and consultants.</p>
+                    <div class="card-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header anim-fade-up">
+                <span class="section-tag" data-i18n="projects_tag">Our Work</span>
+                <h2 class="section-title"><span data-i18n="projects_title_1">Featured</span> <span class="gradient-text"
+                        data-i18n="projects_title_2">Projects</span></h2>
+                <p class="section-subtitle" data-i18n="projects_subtitle">A glimpse into the transformative solutions
+                    we've delivered for industry
+                    leaders worldwide.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card anim-fade-up" style="--delay: 0.4s">
+                    <div class="project-image logo-card">
+                        <img src="images/eventa.png" alt="Eventa SaaS Platform">
+                        <div class="project-overlay">
+                            <span class="project-category">SaaS</span>
+                            <h3 data-i18n="project_5_title">Eventa</h3>
+                            <p data-i18n="project_5_desc">Tədbir Nəqliyyatının Peşəkar İdarəetmə Platforması.</p>
+                            <a href="https://eventa.az" target="_blank" rel="noopener" class="project-link"
+                                data-i18n="project_link">Visit Site →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card anim-fade-up" style="--delay: 0.5s">
+                    <div class="project-image logo-card">
+                        <img src="images/servio.png" alt="Servio SaaS Platform">
+                        <div class="project-overlay">
+                            <span class="project-category">SaaS</span>
+                            <h3 data-i18n="project_6_title">Servio</h3>
+                            <p data-i18n="project_6_desc">Modern, real-time ordering management platform that connects
+                                every part of your restaurant.</p>
+                            <a href="https://servio.az" target="_blank" rel="noopener" class="project-link"
+                                data-i18n="project_link">Visit Site →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-network-bg">
+            <canvas id="network-canvas"></canvas>
+        </div>
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info anim-fade-up">
+                    <span class="section-tag" data-i18n="contact_tag">Get In Touch</span>
+                    <h2 class="section-title"><span data-i18n="contact_title_1">Let's Build</span><br><span
+                            class="gradient-text" data-i18n="contact_title_2">Something Great</span></h2>
+                    <p data-i18n="contact_desc">Have a project in mind? We'd love to hear about it. Reach out and let's
+                        explore how we can
+                        transform your vision into reality.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-label" data-i18n="contact_phone">Phone</span>
+                                <a href="tel:+1234567890">+994 70 727 38 00</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-label" data-i18n="contact_email">Email</span>
+                                <a href="mailto:hello@cybersoft.io">sales@cybersoft.az</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-label" data-i18n="contact_location">Location</span>
+                                <span data-i18n="contact_location_val">Baku, Azerbaijan </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form anim-fade-up" style="--delay: 0.15s" id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder=" " required>
+                            <label for="name" data-i18n="form_name">Full Name</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder=" " required>
+                            <label for="email" data-i18n="form_email">Email Address</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder=" " required>
+                        <label for="subject" data-i18n="form_subject">Subject</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder=" " required></textarea>
+                        <label for="message" data-i18n="form_message">Your Message</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span data-i18n="form_submit">Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">
+                        <span class="logo-icon">⬡</span>
+                        <span class="logo-text">Cyber<span class="logo-accent">soft</span></span>
+                    </a>
+                    <p data-i18n="footer_desc">Pioneering the future of digital innovation with cutting-edge IT
+                        solutions.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick">Quick Links</h4>
+                    <a href="#hero" data-i18n="nav_home">Home</a>
+                    <a href="#services" data-i18n="services_title_2">Services</a>
+                    <a href="#projects" data-i18n="projects_title_2">Projects</a>
+                    <a href="#contact" data-i18n="footer_contact">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="services_title_2">Services</h4>
+                    <a href="#" data-i18n="service_1_title">Software Development</a>
+                    <a href="#" data-i18n="footer_mobile">Mobile Apps</a>
+                    <a href="#" data-i18n="service_3_title">Cloud & DevOps</a>
+                    <a href="#" data-i18n="footer_cyber">Cybersecurity</a>
+                </div>
+                <div class="footer-social">
+                    <h4 data-i18n="footer_connect">Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter / X">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-line"></div>
+                <p>&copy; <span id="footer-year"></span> Cybersoft. <span data-i18n="footer_rights">All rights reserved.
+                        Built with precision.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 15l-6-6-6 6" />
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
