@@ -536,6 +536,7 @@ img { max-width: 100%; display: block; }
     line-height: 1.08;
     letter-spacing: -2px;
     margin-bottom: 24px;
+    white-space: nowrap;
 }
 
 .gradient-text {

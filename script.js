@@ -95,7 +95,7 @@ const translations = {
         service_2_title: "Mobil Tətbiq",
         service_2_desc: "Buttery-smooth UX, real-vaxt imkanları və piksel-mükəmməl interfeysləri olan native və cross-platform mobil tətbiqlər.",
         service_3_title: "Bulud & DevOps",
-        service_3_desc: "Bulud miqrasiyası, CI/CD pipeline, konteyner orkestrasiyası və maksimum uptime və çeviklik üçün infrastruktur-kod kimi.",
+        service_3_desc: "Bulud miqrasiyası, CI/CD pipeline, konteyner orkestrasiyası və maksimum uptime və çeviklik üçün infrastruktur.",
         service_4_title: "Kibertəhlükəsizlik",
         service_4_desc: "Hərtərəfli təhlükə aşkarlanması, nüfuzetmə testi, sıfır güvən arxitekturası və rəqəmsal aktivlərinizi qorumaq üçün uyğunluq çərçivələri.",
         service_5_title: "IT Konsaltinq",
@@ -209,7 +209,7 @@ const translations = {
 const langLabels = { en: "EN", az: "AZ", tr: "TR" };
 const langFlags = { en: "gb", az: "az", tr: "tr" };
 
-let currentLang = "en";
+let currentLang = "az";
 
 function setLanguage(lang) {
     currentLang = lang;
@@ -267,11 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
         langSwitcher.classList.remove('open');
     });
 
-    // Load saved language
+    // Load saved language or default to AZ
     const saved = localStorage.getItem("cybersoft-lang");
-    if (saved && translations[saved]) {
-        setLanguage(saved);
-    }
+    setLanguage(saved && translations[saved] ? saved : "az");
 
     // ===== DYNAMIC FOOTER YEAR =====
     const footerYear = document.getElementById('footer-year');
