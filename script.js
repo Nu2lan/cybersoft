@@ -38,14 +38,6 @@ const translations = {
         projects_title_1: "Featured",
         projects_title_2: "Projects",
         projects_subtitle: "A glimpse into the transformative solutions we've delivered for industry leaders worldwide.",
-        project_1_title: "NeoBank Digital Platform",
-        project_1_desc: "Full-stack banking platform with real-time transactions, AI fraud detection, and multi-currency support.",
-        project_2_title: "MedFlow AI Diagnostics",
-        project_2_desc: "AI-powered diagnostic platform processing 10M+ medical images with 98.7% accuracy.",
-        project_3_title: "UrbanPulse IoT Network",
-        project_3_desc: "City-wide IoT mesh network managing 50K+ sensors for traffic, energy, and environmental monitoring.",
-        project_4_title: "Luxe Marketplace",
-        project_4_desc: "High-performance e-commerce engine handling 100K concurrent users with sub-200ms response times.",
         project_5_title: "Eventa",
         project_5_desc: "Professional Event Transportation Management Platform.",
         project_6_title: "Servio",
@@ -104,14 +96,6 @@ const translations = {
         projects_title_1: "Seçilmiş",
         projects_title_2: "Layihələr",
         projects_subtitle: "Dünya üzrə sənaye liderlərinnə təqdim etdiyimiz transformativ həllərə bir nəzər.",
-        project_1_title: "NeoBank Rəqəmsal Platforma",
-        project_1_desc: "Real-vaxt əməliyyatlar, AI dələduzluq aşkarlanması və çox valyutalı dəstək ilə tam yığın bank platforması.",
-        project_2_title: "MedFlow Süni İntellekt Diaqnostikası",
-        project_2_desc: "98.7% dəqiqliklə 10M+ tibbi şəkili emal edən süni intellekt əsaslı diaqnostik platforma.",
-        project_3_title: "UrbanPulse IoT Şəbəkəsi",
-        project_3_desc: "Trafik, enerji və ətraf mühit monitorinqi üçün 50K+ sensoru idarə edən şəhər miqyasında IoT mesh şəbəkəsi.",
-        project_4_title: "Luxe Bazar",
-        project_4_desc: "200ms-dən az cavab müddəti ilə 100K eyni vaxtda istifadəçini idarə edən yüksək performanslı e-ticarət mühərriki.",
         project_5_title: "Eventa",
         project_5_desc: "Tədbir Nəqliyyatının Peşəkar İdarəetmə Platforması.",
         project_6_title: "Servio",
@@ -170,14 +154,6 @@ const translations = {
         projects_title_1: "Öne Çıkan",
         projects_title_2: "Projeler",
         projects_subtitle: "Dünya çapındaki sektör liderlerine sunduğumuz dönüştürücü çözümlere bir bakış.",
-        project_1_title: "NeoBank Dijital Platform",
-        project_1_desc: "Gerçek zamanlı işlemler, AI dolandırıcılık algılama ve çoklu para birimi desteğine sahip tam yığın bankacılık platformu.",
-        project_2_title: "MedFlow Yapay Zeka Tanı",
-        project_2_desc: "%98.7 doğrulukla 10M+ tıbbi görüntüyü işleyen yapay zeka destekli tanı platformu.",
-        project_3_title: "UrbanPulse IoT Ağı",
-        project_3_desc: "Trafik, enerji ve çevre izleme için 50K+ sensörü yöneten şehir çapında IoT mesh ağı.",
-        project_4_title: "Luxe Pazar Yeri",
-        project_4_desc: "200ms altı yanıt süreleriyle 100K eşzamanlı kullanıcıyı yöneten yüksek performanslı e-ticaret motoru.",
         project_5_title: "Eventa",
         project_5_desc: "Profesyonel Etkinlik Ulaşım Yönetim Platformu.",
         project_6_title: "Servio",
@@ -548,21 +524,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== CONTACT FORM =====
     const form = document.getElementById('contact-form');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
             const originalHTML = btn.innerHTML;
+            const sendingLabels = { en: "Sending…", az: "Göndərilir…", tr: "Gönderiliyor…" };
             const sentLabels = { en: "Sent ✓", az: "Göndərildi ✓", tr: "Gönderildi ✓" };
-            btn.innerHTML = `<span>${sentLabels[currentLang] || sentLabels.en}</span>`;
-            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            const errorLabels = { en: "Error ✗", az: "Xəta ✗", tr: "Hata ✗" };
+
+            btn.innerHTML = `<span>${sendingLabels[currentLang] || sendingLabels.en}</span>`;
             btn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    btn.innerHTML = `<span>${sentLabels[currentLang] || sentLabels.en}</span>`;
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    form.reset();
+                } else {
+                    btn.innerHTML = `<span>${errorLabels[currentLang] || errorLabels.en}</span>`;
+                    btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                }
+            } catch (error) {
+                btn.innerHTML = `<span>${errorLabels[currentLang] || errorLabels.en}</span>`;
+                btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            }
 
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
                 btn.style.background = '';
                 btn.disabled = false;
-                form.reset();
-                // Re-apply current lang to the button text
                 setLanguage(currentLang);
             }, 3000);
         });

@@ -899,7 +899,7 @@ img { max-width: 100%; display: block; }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
@@ -1489,6 +1489,23 @@ img { max-width: 100%; display: block; }
 
     .hero-title {
         letter-spacing: -1px;
+        white-space: normal;
+        word-break: break-word;
+        font-size: clamp(32px, 10vw, 52px);
+    }
+
+    .hero {
+        padding: 120px 20px 80px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        padding: 0 8px;
+    }
+
+    .hero-badge {
+        font-size: 11px;
+        padding: 6px 14px;
     }
 }
 
@@ -1496,6 +1513,7 @@ img { max-width: 100%; display: block; }
     .hero-buttons {
         flex-direction: column;
         width: 100%;
+        padding: 0 8px;
     }
 
     .hero-buttons .btn {
@@ -1505,6 +1523,14 @@ img { max-width: 100%; display: block; }
 
     .contact-form {
         padding: 24px;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 9vw, 42px);
+    }
+
+    .section-title {
+        font-size: clamp(26px, 7vw, 36px);
     }
 }
 

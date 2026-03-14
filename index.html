@@ -5,7 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Cybersoft – Innovative IT Solutions. We deliver cutting-edge software development, cloud & DevOps, cybersecurity, and IT consulting services.">
+        content="Cybersoft – Innovative IT Solutions. We deliver cutting-edge software development, cloud &amp; DevOps, cybersecurity, and IT consulting services.">
+    <meta property="og:title" content="Cybersoft – Innovative IT Solutions">
+    <meta property="og:description" content="We deliver cutting-edge software development, cloud &amp; DevOps, cybersecurity, and IT consulting services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cybersoft.az">
+    <meta property="og:image" content="https://cybersoft.az/favicon.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cybersoft – Innovative IT Solutions">
+    <meta name="twitter:description" content="We deliver cutting-edge software development, cloud &amp; DevOps, cybersecurity, and IT consulting services.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Cybersoft – Innovative IT Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -284,7 +292,8 @@
                             </div>
                             <div>
                                 <span class="contact-label" data-i18n="contact_phone">Phone</span>
-                                <a href="tel:+1234567890">+994 70 727 38 00</a>
+                                <a href="tel:+994707273800">+994 70 727 38 00</a>
+                                <a href="tel:+994557728179">+994 55 772 81 79</a>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -297,7 +306,7 @@
                             </div>
                             <div>
                                 <span class="contact-label" data-i18n="contact_email">Email</span>
-                                <a href="mailto:hello@cybersoft.io">sales@cybersoft.az</a>
+                                <a href="mailto:sales@cybersoft.az">sales@cybersoft.az</a>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -315,25 +324,26 @@
                     </div>
                 </div>
                 <form class="contact-form anim-fade-up" style="--delay: 0.15s" id="contact-form">
+                    <input type="hidden" name="access_key" value="49f64951-4ad9-4d93-ba90-c60ac12528f0">
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder=" " required>
+                            <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name" data-i18n="form_name">Full Name</label>
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder=" " required>
+                            <input type="email" id="email" name="email" placeholder=" " required>
                             <label for="email" data-i18n="form_email">Email Address</label>
                             <div class="form-line"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" placeholder=" " required>
+                        <input type="text" id="subject" name="subject" placeholder=" " required>
                         <label for="subject" data-i18n="form_subject">Subject</label>
                         <div class="form-line"></div>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" rows="4" placeholder=" " required></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
                         <label for="message" data-i18n="form_message">Your Message</label>
                         <div class="form-line"></div>
                     </div>

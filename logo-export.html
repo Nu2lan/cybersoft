@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Export</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #111;
+            font-family: sans-serif;
+            color: #fff;
+            gap: 24px;
+        }
+        canvas { border: 1px solid #333; }
+        a {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #00b4ff, #00e5ff);
+            color: #05060f;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        a:hover { opacity: 0.9; }
+        p { color: #888; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <p>Logo Preview (1024×1024)</p>
+    <canvas id="canvas" width="1024" height="1024"></canvas>
+    <a id="download" href="#" download="cybersoft-logo.png">Download PNG</a>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const W = 1024, H = 1024;
+
+        // Load Montserrat font first
+        const font = new FontFace('Montserrat', 'url(https://fonts.gstatic.com/s/montserrat/v29/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2)');
+
+        font.load().then(loadedFont => {
+            document.fonts.add(loadedFont);
+            drawLogo();
+        }).catch(() => {
+            // Fallback if font fails to load
+            drawLogo();
+        });
+
+        function drawLogo() {
+            // Background
+            ctx.fillStyle = '#05060f';
+            ctx.fillRect(0, 0, W, H);
+
+            // Create gradient for icon and accent text
+            const grad = ctx.createLinearGradient(280, 460, 760, 560);
+            grad.addColorStop(0, '#00b4ff');
+            grad.addColorStop(1, '#00e5ff');
+
+            // Draw hexagon icon (⬡) 
+            const iconX = 290;
+            const iconY = 512;
+            ctx.font = '96px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Glow effect
+            ctx.shadowColor = 'rgba(0, 180, 255, 0.5)';
+            ctx.shadowBlur = 16;
+            ctx.fillStyle = grad;
+            ctx.fillText('⬡', iconX, iconY);
+
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+
+            // Draw "Cyber" in white
+            ctx.font = '700 82px Montserrat, Arial, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#e8eaf6';
+
+            const textStartX = 350;
+            const textY = 512;
+            ctx.fillText('Cyber', textStartX, textY);
+
+            // Measure "Cyber" width to position "soft"
+            const cyberWidth = ctx.measureText('Cyber').width;
+
+            // Draw "soft" with gradient
+            const softGrad = ctx.createLinearGradient(textStartX + cyberWidth, textY, textStartX + cyberWidth + 200, textY);
+            softGrad.addColorStop(0, '#00b4ff');
+            softGrad.addColorStop(1, '#00e5ff');
+            ctx.fillStyle = softGrad;
+            ctx.fillText('soft', textStartX + cyberWidth, textY);
+
+            // Setup download
+            const link = document.getElementById('download');
+            link.href = canvas.toDataURL('image/png');
+        }
+    </script>
+</body>
+</html>
