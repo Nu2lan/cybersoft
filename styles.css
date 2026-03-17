@@ -1482,6 +1482,10 @@ img { max-width: 100%; display: block; }
         display: none;
     }
 
+    .contact {
+        min-height: auto;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 32px;
